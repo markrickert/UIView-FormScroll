@@ -23,4 +23,4 @@ Improvements by [Mark Rickert](http://www.mohawkapps.com)
 
 #License
 
-Public DOmain
+Public Domain
