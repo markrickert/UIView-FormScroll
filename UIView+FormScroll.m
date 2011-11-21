@@ -11,14 +11,21 @@
 @implementation UIView (FormScroll)
 
 -(void)scrollToY:(float)y
-{	
+{		
 	[UIView beginAnimations:@"registerScroll" context:NULL];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-	[UIView setAnimationDuration:0.4];
+	[UIView setAnimationDuration:kFormScrollAnimationTiming];
 	self.transform = CGAffineTransformMakeTranslation(0, y);
 	[UIView commitAnimations];	
+
+	[self performSelector:@selector(notifyAnimationComplete) withObject:nil afterDelay:kFormScrollAnimationTiming];
 }
 
+-(void) notifyAnimationComplete
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:kFormScrollDidComplete object:nil];	
+}
+	 
 -(void)scrollToView:(UIView *)view
 {
 	CGRect theFrame = view.frame;

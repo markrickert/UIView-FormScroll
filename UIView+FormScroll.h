@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UIView (FormScroll) 
+#define kFormScrollDidComplete @"kFormScrollDidComplete"
+#define kFormScrollAnimationTiming 0.4
+
+@interface UIView (FormScroll)
 
 -(void)scrollToY:(float)y;
 -(void)scrollToView:(UIView *)view;
 -(void)scrollElement:(UIView *)view toPoint:(float)y;
+-(void) notifyAnimationComplete;
 
 @end
